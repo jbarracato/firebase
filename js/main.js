@@ -25,6 +25,12 @@ $(document).ready(function(){
     });
   });
 
+  $('#usermsg').keypress(function(e){
+    if(e.which == 13){
+      $('#submitmsg').click();
+    }
+  });
+
   getChatLog();
 
   //Delete a message

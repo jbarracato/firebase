@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!--*** Google Web Fonts ***-->
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <div id="wrapper">
+        <div id="menu">
+            <div class='leftMenu'>
+                <img id='logo' src='img/aim.png' height='24px' width='24px'/>
+                <p><span id="name">username</span></b></p>
+            </div>
+            <div class='rightMenu'>
+                <button class='menuButton'>_</button>
+                <button class='menuButton'>[]</button>
+                <button class='menuButton' id='exit'>X</button>
+            </div>
+        </div>
+        <div id="fakeMenu">
+            <div class='leftMenu'>
+                <p><span>F</span>ile</p>
+                <p><span>E</span>dit</p>
+                <p>I<span>n</span>sert</p>
+                <p><span>P</span>eople</p>
+            </div>
+            <div class='rightMenu'>
+                <p>JB's Warning Level: 98%</p>
+            </div>
+        </div>
+
+        <div id="chatbox"></div>
+        <div class="clearfix"></div>
+
+        <form name="message" action="">
+            <input name="usermsg" type="text" id="usermsg" size="63" />
+        </form>
+
+            <input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
+
+    </div>
+
+    <!--*** External JS ***-->  
+    <!-- Firebase CDN -->
+    <script src='https://cdn.firebase.com/js/client/2.4.1/firebase.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8" async defer></script>
+  </body>
+
+</html>

@@ -57,7 +57,12 @@ a {
     color:#0000FF;
     text-decoration:none; }
 
-    a:hover { text-decoration:underline; }
+a:hover {
+  text-decoration:underline; }
+
+li {
+  list-style: none;
+}
 
 #wrapper, #loginform {
     margin:0 auto;
@@ -81,7 +86,7 @@ a {
     line-height: 30px
 }
 
-i{
+i {
     padding-left: 20px;
 }
 

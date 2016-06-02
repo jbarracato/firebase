@@ -64,7 +64,7 @@ a {
     padding-bottom:25px;
     background:#ece9d8;
     width:504px;
-    border:3px solid #0021a5; 
+    border:3px solid #0021a5;
     border-radius: 5px;
 }
 
@@ -108,7 +108,7 @@ i{
     border-left: #22211e 1px solid;
     border-bottom: #eeebdc 1px solid;
     border-right: #eeebdc 1px solid;
-    box-shadow: 2px 2px #faf9f6; 
+    box-shadow: 2px 2px #faf9f6;
 }
 
 #submit { width: 60px; }

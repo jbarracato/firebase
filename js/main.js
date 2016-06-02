@@ -8,52 +8,46 @@ $(document).ready(function(){
 
   $('#submitmsg').on('click', function (event) {
     event.preventDefault();
-
-    // grab user message input
     var message = $('#usermsg').val();
-
-    // clear message input (for UX purposes)
     $('#usermsg').val('');
-
-    // create a section for messages data in your db
     var messagesReference = messageAppReference.child('chatLog');
-
-    // use the set method to save data to the messages
     messagesReference.push({
       username: yourName,
       message: message,
     });
   });
 
-  $('#usermsg').keypress(function(e){
-    if(e.which == 13){
-      $('#submitmsg').click();
-    }
-  });
-
   getChatLog();
 
+  // create delete element
+  $('#chatbox').on('click', '.fa-trash', function () {
+    var id = ($(this).parent().data('id'));
+    deleteMessage(id);
+  });
+
   //Delete a message
-
-// create delete element
-$('#chatbox').on('click', '.fa-trash', function () {
-  // var id = $(this).parentNode().data('id')
-  var id = ($(this).parent().data('id'))
-  console.log(id)
-  deleteMessage(id)
-})
-
   function deleteMessage(id) {
     // find message whose objectId is equal to the id we're searching with
-    var messageReference = new Firebase("https://class-14.firebaseio.com/chatLog/" + id)
+    var messageReference = new Firebase("https://class-14.firebaseio.com/chatLog/" + id);
     messageReference.remove();
-
     $("li").attr("data-id",id).remove();
-
     getChatLog();
-
   }
 
+  // create edit element
+  $('#chatbox').on('click', '.fa-pencil', function () {
+    var id = ($(this).parent().data('id'));
+    editMessage(id);
+  });
+
+  //edit a message
+  function editMessage(id) {
+    // find message whose objectId is equal to the id we're searching with
+    var messageReference = new Firebase("https://class-14.firebaseio.com/chatLog/" + id);
+    messageReference.update({message: message});
+    $("li").attr("data-id",id).update();
+    getChatLog();
+  }
 
 //close document.ready function on next line
 });
@@ -72,8 +66,7 @@ function getChatLog() {
       var username = allMessages[msg].username;
 
       var $messageListElement = $('<li>' + username + ': ' + message + '<i class="fa fa-pencil edit"></i><i class="fa fa-trash delete"></i></li>');
-      $messageListElement.attr('data-id', msg)
-      console.log($messageListElement)
+      $messageListElement.attr('data-id', msg);
       messages.push($messageListElement);
 
       $chatbox.empty();
@@ -84,9 +77,3 @@ function getChatLog() {
     }
   });
 }
-
-$('#usermsg').keypress(function(e){
-    if(e.which == 13){
-        $('#submitmsg').click();
-    }
-});

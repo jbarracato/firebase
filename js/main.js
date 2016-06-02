@@ -1,5 +1,6 @@
 // connect to your Firebase application using your reference URL
 var messageAppReference = new Firebase("https://class-14.firebaseio.com/");
+var originalMessage;
 
 // jQuery Document
 $(document).ready(function(){
@@ -43,10 +44,14 @@ $(document).ready(function(){
   //edit a message
   function editMessage(id) {
     // find message whose objectId is equal to the id we're searching with
-    var messageReference = new Firebase("https://class-14.firebaseio.com/chatLog/" + id);
-    messageReference.update({message: message});
-    $("li").attr("data-id",id).update();
-    getChatLog();
+    var messageReference = new Firebase('https://class-14.firebaseio.com/chatLog/' + id + '/message');
+    messageReference.on('value', function(snapshot) {
+      originalMessage = snapshot.val();
+    });
+    var editMessagePrompt = prompt ('Edit your message:', originalMessage);
+    var editedMessage = {message: editMessagePrompt};
+    var newMessageReference = new Firebase('https://class-14.firebaseio.com/chatLog/' + id);
+    newMessageReference.update(editedMessage);
   }
 
 //close document.ready function on next line
